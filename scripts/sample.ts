@@ -75,6 +75,7 @@ const displayOnMatrix = async (text: string): Promise<void> => {
 
 const sample = async () => {
     const matrix = buildMatrix();
+    console.log('Matrix built');
 
     matrix
         .clear()            // clear the display
@@ -92,9 +93,12 @@ const sample = async () => {
         .drawLine(0, 0, matrix.width(), matrix.height())
         .drawLine(matrix.width() - 1, 0, 0, matrix.height() - 1);
 
+    console.log('Matrix setted up');
     matrix.sync();
+    console.log('Matrix sync done');
 
-    await wait(999999999);
+    console.log('Waiting...');
+    await wait(100000);
 }
 
 const value = process.argv[2];
