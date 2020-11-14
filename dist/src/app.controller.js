@@ -26,7 +26,12 @@ let AppController = class AppController {
     }
     async postText(text) {
         console.log('postText', text);
-        await this.ledMatrixService.text(text);
+        try {
+            await this.ledMatrixService.text(text);
+        }
+        catch (e) {
+            console.log(e);
+        }
     }
 };
 __decorate([

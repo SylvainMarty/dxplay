@@ -17,6 +17,10 @@ export class AppController {
   @Post()
   async postText(@Body() text: string): Promise<void> {
     console.log('postText', text);
-    await this.ledMatrixService.text(text);
+    try {
+      await this.ledMatrixService.text(text);
+    } catch (e) {
+      console.log(e);
+    }
   }
 }
