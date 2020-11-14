@@ -1432,7 +1432,7 @@
         "affectsGlobalScope": false
       },
       "../src/led-matrix/led-matrix.service.ts": {
-        "version": "2fc4a46b2be2568c0679f53c1d46f32335580943e73fef09c8322c1ddd6f2dc6",
+        "version": "ebe135a69fa706d75912c752114086a6001fd6337d835270ac4c4e2b0d0ce189",
         "signature": "a716d96ac9b63af49d41f1ea7f4b7f38d25fc2e53a4f551584f484ac73a45af0",
         "affectsGlobalScope": false
       },

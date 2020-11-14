@@ -52,9 +52,11 @@ let LedMatrixService = class LedMatrixService {
                 await this.wait(400);
             }
         }
+        console.log('Clearing matrix');
         this.matrix
             .clear()
             .sync();
+        console.log('Matrix cleared');
     }
     wait(t) {
         return new Promise(ok => setTimeout(ok, t));

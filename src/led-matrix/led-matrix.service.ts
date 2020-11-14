@@ -61,9 +61,11 @@ export class LedMatrixService {
             }
         }
     
+        console.log('Clearing matrix');
         this.matrix
             .clear()
             .sync();
+        console.log('Matrix cleared');
     }
 
     private wait (t: number): Promise<void> {
