@@ -43,6 +43,9 @@ const displayOnMatrix = async (text) => {
             await wait(400);
         }
     }
+    matrix
+        .clear()
+        .sync();
 };
 const sample = async () => {
     const matrix = buildMatrix();

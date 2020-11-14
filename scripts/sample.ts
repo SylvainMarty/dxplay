@@ -71,6 +71,10 @@ const displayOnMatrix = async (text: string): Promise<void> => {
             await wait(400);
         }
     }
+
+    matrix
+        .clear()
+        .sync();
 }
 
 const sample = async () => {
