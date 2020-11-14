@@ -22,7 +22,7 @@ const Colors = {
     Red: 0xFF0000,
     White: 0xFFFFFF,
     Yellow: 0xFFFF00,
-  };
+};
 
 @Injectable()
 export class LedMatrixService {
@@ -56,15 +56,15 @@ export class LedMatrixService {
         const lines = LayoutUtils.textToLines(font, this.matrix.width(), text);
         for (const alignmentH of [HorizontalAlignment.Left, HorizontalAlignment.Center, HorizontalAlignment.Right]) {
             for (const alignmentV of [VerticalAlignment.Top, VerticalAlignment.Middle, VerticalAlignment.Bottom]) {
-              this.matrix.fgColor(Colors.Yellow).clear();
-              LayoutUtils.linesToMappedGlyphs(lines, font.height(), this.matrix.width(), this.matrix.height(), alignmentH, alignmentV)
+                this.matrix.fgColor(Colors.Yellow).clear();
+                LayoutUtils.linesToMappedGlyphs(lines, font.height(), this.matrix.width(), this.matrix.height(), alignmentH, alignmentV)
                 .map(glyph => {
-                  this.matrix.drawText(glyph.char, glyph.x, glyph.y);
+                    this.matrix.drawText(glyph.char, glyph.x, glyph.y);
                 });
-              this.matrix.sync();
-              await this.wait(400);
+                this.matrix.sync();
+                await this.wait(400);
             }
-          }
+        }
     }
 
     private wait (t: number): Promise<void> {
