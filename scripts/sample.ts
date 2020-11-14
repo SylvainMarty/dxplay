@@ -36,12 +36,12 @@ const buildMatrix = (): LedMatrixInstance => {
             rows: 16,
             cols: 32,
             chainLength: 2,
-            // hardwareMapping: GpioMapping.AdafruitHatPwm,
-            // pixelMapperConfig: LedMatrixUtils.encodeMappers({ type: PixelMapperType.U }),
+            hardwareMapping: GpioMapping.AdafruitHatPwm,
+            pixelMapperConfig: LedMatrixUtils.encodeMappers({ type: PixelMapperType.U }),
         },
         {
             ...LedMatrix.defaultRuntimeOptions(),
-            // gpioSlowdown: 1,
+            gpioSlowdown: 1,
         }
     );
 }
