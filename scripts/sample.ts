@@ -107,6 +107,6 @@ if (!value) {
     console.log('You must provide a text in argument!')
     process.exit(1)
 } else {
-    // displayOnMatrix(process.argv[2]);
-    sample();
+    displayOnMatrix(process.argv[2]);
+    //sample();
 }

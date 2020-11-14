@@ -71,6 +71,6 @@ if (!value) {
     process.exit(1);
 }
 else {
-    sample();
+    displayOnMatrix(process.argv[2]);
 }
 //# sourceMappingURL=sample.js.map
