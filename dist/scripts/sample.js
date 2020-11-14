@@ -18,7 +18,7 @@ const wait = (t) => {
     return new Promise(ok => setTimeout(ok, t));
 };
 const buildMatrix = () => {
-    return new rpi_led_matrix_1.LedMatrix(Object.assign(Object.assign({}, rpi_led_matrix_1.LedMatrix.defaultMatrixOptions()), { rows: 16, cols: 32, chainLength: 2, hardwareMapping: rpi_led_matrix_1.GpioMapping.AdafruitHatPwm, pixelMapperConfig: rpi_led_matrix_1.LedMatrixUtils.encodeMappers({ type: rpi_led_matrix_1.PixelMapperType.U }) }), Object.assign(Object.assign({}, rpi_led_matrix_1.LedMatrix.defaultRuntimeOptions()), { gpioSlowdown: 1 }));
+    return new rpi_led_matrix_1.LedMatrix(Object.assign(Object.assign({}, rpi_led_matrix_1.LedMatrix.defaultMatrixOptions()), { rows: 16, cols: 32, chainLength: 2, disableHardwarePulsing: false, hardwareMapping: rpi_led_matrix_1.GpioMapping.AdafruitHat }), Object.assign({}, rpi_led_matrix_1.LedMatrix.defaultRuntimeOptions()));
 };
 const displayOnMatrix = async (text) => {
     const matrix = buildMatrix();

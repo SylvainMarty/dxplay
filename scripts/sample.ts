@@ -1,5 +1,4 @@
 import * as path from 'path';
-import * as fs from 'fs';
 import {
     LedMatrix,
     LedMatrixInstance,
@@ -36,12 +35,13 @@ const buildMatrix = (): LedMatrixInstance => {
             rows: 16,
             cols: 32,
             chainLength: 2,
-            hardwareMapping: GpioMapping.AdafruitHatPwm,
-            pixelMapperConfig: LedMatrixUtils.encodeMappers({ type: PixelMapperType.U }),
+            disableHardwarePulsing: false,
+            hardwareMapping: GpioMapping.AdafruitHat,
+            // pixelMapperConfig: LedMatrixUtils.encodeMappers({ type: PixelMapperType.U }),
         },
         {
             ...LedMatrix.defaultRuntimeOptions(),
-            gpioSlowdown: 1,
+            // gpioSlowdown: 1,
         }
     );
 }
