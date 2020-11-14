@@ -1,3 +1,5 @@
+import * as path from 'path';
+import * as fs from 'fs';
 import {
     LedMatrix,
     LedMatrixInstance,
@@ -34,12 +36,12 @@ const buildMatrix = (): LedMatrixInstance => {
             rows: 16,
             cols: 32,
             chainLength: 2,
-            hardwareMapping: GpioMapping.AdafruitHatPwm,
-            pixelMapperConfig: LedMatrixUtils.encodeMappers({ type: PixelMapperType.U }),
+            // hardwareMapping: GpioMapping.AdafruitHatPwm,
+            // pixelMapperConfig: LedMatrixUtils.encodeMappers({ type: PixelMapperType.U }),
         },
         {
             ...LedMatrix.defaultRuntimeOptions(),
-            gpioSlowdown: 1,
+            // gpioSlowdown: 1,
         }
     );
 }
@@ -51,7 +53,8 @@ const displayOnMatrix = async (text: string): Promise<void> => {
         .clear();
     console.log('Matrix cleared');
 
-    const font = new Font('helvR12', `${process.cwd()}/fonts/helvR12.bdf`);
+    // helvR12
+    const font = new Font('6x10', path.join(process.cwd(), 'node_modules/rpi-led-matrix/fonts/6x10.bdf'));
     console.log('Font chosen');
     matrix.font(font);
     console.log('Font set on Matrix');
