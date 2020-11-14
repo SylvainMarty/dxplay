@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LedMatrixService = void 0;
+const path = require("path");
 const common_1 = require("@nestjs/common");
 const rpi_led_matrix_1 = require("rpi-led-matrix");
 const Colors = {
@@ -26,14 +27,19 @@ const Colors = {
 };
 let LedMatrixService = class LedMatrixService {
     constructor() {
+        this.matrix = this.buildMatrix();
+        console.log('Matrix built');
     }
     async text(text) {
-        this.matrix = this.buildMatrix();
         this.matrix
             .clear();
-        const font = new rpi_led_matrix_1.Font('helvR12', `${process.cwd()}/fonts/helvR12.bdf`);
+        console.log('Matrix cleared');
+        const font = new rpi_led_matrix_1.Font('6x10', path.join(process.cwd(), 'node_modules/rpi-led-matrix/fonts/6x10.bdf'));
+        console.log('Font chosen');
         this.matrix.font(font);
+        console.log('Font set on Matrix');
         const lines = rpi_led_matrix_1.LayoutUtils.textToLines(font, this.matrix.width(), text);
+        console.log('Lines evaluated from text');
         for (const alignmentH of [rpi_led_matrix_1.HorizontalAlignment.Left, rpi_led_matrix_1.HorizontalAlignment.Center, rpi_led_matrix_1.HorizontalAlignment.Right]) {
             for (const alignmentV of [rpi_led_matrix_1.VerticalAlignment.Top, rpi_led_matrix_1.VerticalAlignment.Middle, rpi_led_matrix_1.VerticalAlignment.Bottom]) {
                 this.matrix.fgColor(Colors.Yellow).clear();
@@ -45,12 +51,15 @@ let LedMatrixService = class LedMatrixService {
                 await this.wait(400);
             }
         }
+        this.matrix
+            .clear()
+            .sync();
     }
     wait(t) {
         return new Promise(ok => setTimeout(ok, t));
     }
     buildMatrix() {
-        return new rpi_led_matrix_1.LedMatrix(Object.assign(Object.assign({}, rpi_led_matrix_1.LedMatrix.defaultMatrixOptions()), { rows: 16, cols: 32, chainLength: 2, hardwareMapping: rpi_led_matrix_1.GpioMapping.AdafruitHatPwm, pixelMapperConfig: rpi_led_matrix_1.LedMatrixUtils.encodeMappers({ type: rpi_led_matrix_1.PixelMapperType.U }) }), Object.assign(Object.assign({}, rpi_led_matrix_1.LedMatrix.defaultRuntimeOptions()), { gpioSlowdown: 1 }));
+        return new rpi_led_matrix_1.LedMatrix(Object.assign(Object.assign({}, rpi_led_matrix_1.LedMatrix.defaultMatrixOptions()), { rows: 16, cols: 32, chainLength: 2, disableHardwarePulsing: false, hardwareMapping: rpi_led_matrix_1.GpioMapping.AdafruitHat }), Object.assign({}, rpi_led_matrix_1.LedMatrix.defaultRuntimeOptions()));
     }
 };
 LedMatrixService = __decorate([

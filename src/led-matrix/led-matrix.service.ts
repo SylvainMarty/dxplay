@@ -1,3 +1,4 @@
+import * as path from 'path';
 import { Injectable } from '@nestjs/common';
 import {
     LedMatrix,
@@ -5,7 +6,6 @@ import {
     LedMatrixUtils,
     LayoutUtils,
     GpioMapping,
-    PixelMapperType,
     Font,
     HorizontalAlignment,
     VerticalAlignment,
@@ -29,42 +29,38 @@ export class LedMatrixService {
     private matrix: LedMatrixInstance;
 
     constructor () {
-        // this.matrix = new LedMatrix(
-        //     {
-        //         ...LedMatrix.defaultMatrixOptions(),
-        //         rows: 16,
-        //         cols: 32,
-        //         chainLength: 2,
-        //         hardwareMapping: GpioMapping.AdafruitHatPwm,
-        //         pixelMapperConfig: LedMatrixUtils.encodeMappers({ type: PixelMapperType.U }),
-        //     },
-        //     {
-        //         ...LedMatrix.defaultRuntimeOptions(),
-        //         gpioSlowdown: 1,
-        //     }
-        // );
+        this.matrix = this.buildMatrix();
+        console.log('Matrix built');
     }
 
     public async text(text: string): Promise<void>
     {
-        this.matrix = this.buildMatrix();
         this.matrix
             .clear();
-        
-        const font = new Font('helvR12', `${process.cwd()}/fonts/helvR12.bdf`);
+        console.log('Matrix cleared');
+    
+        // helvR12
+        const font = new Font('6x10', path.join(process.cwd(), 'node_modules/rpi-led-matrix/fonts/6x10.bdf'));
+        console.log('Font chosen');
         this.matrix.font(font);
+        console.log('Font set on Matrix');
         const lines = LayoutUtils.textToLines(font, this.matrix.width(), text);
+        console.log('Lines evaluated from text');
         for (const alignmentH of [HorizontalAlignment.Left, HorizontalAlignment.Center, HorizontalAlignment.Right]) {
             for (const alignmentV of [VerticalAlignment.Top, VerticalAlignment.Middle, VerticalAlignment.Bottom]) {
                 this.matrix.fgColor(Colors.Yellow).clear();
                 LayoutUtils.linesToMappedGlyphs(lines, font.height(), this.matrix.width(), this.matrix.height(), alignmentH, alignmentV)
-                .map(glyph => {
-                    this.matrix.drawText(glyph.char, glyph.x, glyph.y);
-                });
+                    .map(glyph => {
+                        this.matrix.drawText(glyph.char, glyph.x, glyph.y);
+                    });
                 this.matrix.sync();
                 await this.wait(400);
             }
         }
+    
+        this.matrix
+            .clear()
+            .sync();
     }
 
     private wait (t: number): Promise<void> {
@@ -79,12 +75,13 @@ export class LedMatrixService {
                 rows: 16,
                 cols: 32,
                 chainLength: 2,
-                hardwareMapping: GpioMapping.AdafruitHatPwm,
-                pixelMapperConfig: LedMatrixUtils.encodeMappers({ type: PixelMapperType.U }),
+                disableHardwarePulsing: false,
+                hardwareMapping: GpioMapping.AdafruitHat,
+                // pixelMapperConfig: LedMatrixUtils.encodeMappers({ type: PixelMapperType.U }),
             },
             {
                 ...LedMatrix.defaultRuntimeOptions(),
-                gpioSlowdown: 1,
+                // gpioSlowdown: 1,
             }
         );
     }

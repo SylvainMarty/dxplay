@@ -1442,7 +1442,7 @@
         "affectsGlobalScope": false
       },
       "../src/led-matrix/led-matrix.service.ts": {
-        "version": "56cb104adb4950e63f6300222e5f9fd65ef493458ee4252e69e4b1d41d80fc2c",
+        "version": "7072d26102adb09926ee599ecae48628cfa01f9ac26fd8d91c57549fbbb38c3f",
         "signature": "a716d96ac9b63af49d41f1ea7f4b7f38d25fc2e53a4f551584f484ac73a45af0",
         "affectsGlobalScope": false
       },
@@ -3271,6 +3271,7 @@
       ],
       "../src/led-matrix/led-matrix.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@types/node/path.d.ts",
         "../node_modules/rpi-led-matrix/dist/index.d.ts"
       ],
       "../src/main.ts": [
