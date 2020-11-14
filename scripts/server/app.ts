@@ -14,6 +14,7 @@ app.post('', (req, res) => {
     console.log('postText', req.body);
     if (!req.body) {
         res.status(400).send('No text given.');
+        return;
     }
     display(req.body);
     res.send('Ok');
