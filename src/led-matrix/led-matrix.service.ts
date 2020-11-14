@@ -29,17 +29,20 @@ export class LedMatrixService {
     private matrix: LedMatrixInstance;
 
     constructor () {
-        this.matrix = this.buildMatrix();
-        console.log('Matrix built');
+        // this.matrix = this.buildMatrix();
+        // console.log('Matrix built');
     }
 
     public async text(text: string): Promise<void>
     {
+        this.matrix = this.buildMatrix();
+        console.log('Matrix built');
         this.matrix
             .clear();
         console.log('Matrix cleared');
     
         // helvR12
+        console.log(process.cwd(), path.join(process.cwd(), 'node_modules/rpi-led-matrix/fonts/6x10.bdf'));
         const font = new Font('6x10', path.join(process.cwd(), 'node_modules/rpi-led-matrix/fonts/6x10.bdf'));
         console.log('Font chosen');
         this.matrix.font(font);

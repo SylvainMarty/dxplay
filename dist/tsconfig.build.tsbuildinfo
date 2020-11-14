@@ -417,7 +417,7 @@
         "affectsGlobalScope": false
       },
       "../scripts/sample.ts": {
-        "version": "2f7f67dc2cb92d02bdbddfa3c369e318adb6ffb5bde82327be18d6d5bdb065e8",
+        "version": "85bfd9928369aa3457afecf71bbbdd23844ca7732c68467a18f396ee3a6d21d3",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6",
         "affectsGlobalScope": false
       },
@@ -1442,7 +1442,7 @@
         "affectsGlobalScope": false
       },
       "../src/led-matrix/led-matrix.service.ts": {
-        "version": "7072d26102adb09926ee599ecae48628cfa01f9ac26fd8d91c57549fbbb38c3f",
+        "version": "2fc4a46b2be2568c0679f53c1d46f32335580943e73fef09c8322c1ddd6f2dc6",
         "signature": "a716d96ac9b63af49d41f1ea7f4b7f38d25fc2e53a4f551584f484ac73a45af0",
         "affectsGlobalScope": false
       },

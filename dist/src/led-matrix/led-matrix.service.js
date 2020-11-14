@@ -27,13 +27,14 @@ const Colors = {
 };
 let LedMatrixService = class LedMatrixService {
     constructor() {
-        this.matrix = this.buildMatrix();
-        console.log('Matrix built');
     }
     async text(text) {
+        this.matrix = this.buildMatrix();
+        console.log('Matrix built');
         this.matrix
             .clear();
         console.log('Matrix cleared');
+        console.log(process.cwd(), path.join(process.cwd(), 'node_modules/rpi-led-matrix/fonts/6x10.bdf'));
         const font = new rpi_led_matrix_1.Font('6x10', path.join(process.cwd(), 'node_modules/rpi-led-matrix/fonts/6x10.bdf'));
         console.log('Font chosen');
         this.matrix.font(font);

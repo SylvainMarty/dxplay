@@ -47,27 +47,6 @@ const displayOnMatrix = async (text) => {
         .clear()
         .sync();
 };
-const sample = async () => {
-    const matrix = buildMatrix();
-    console.log('Matrix built');
-    matrix
-        .clear()
-        .brightness(100)
-        .fgColor(0x0000FF)
-        .fill()
-        .fgColor(0xFFFF00)
-        .drawCircle(matrix.width() / 2, matrix.height() / 2, matrix.width() / 2 - 1)
-        .drawRect(matrix.width() / 4, matrix.height() / 4, matrix.width() / 2, matrix.height() / 2)
-        .fgColor({ r: 255, g: 0, b: 0 })
-        .drawLine(0, 0, matrix.width(), matrix.height())
-        .drawLine(matrix.width() - 1, 0, 0, matrix.height() - 1);
-    console.log('Matrix setted up');
-    matrix.sync();
-    console.log('Matrix sync done');
-    console.log('Waiting...');
-    await wait(120000);
-    console.log('Terminating');
-};
 const value = process.argv[2];
 if (!value) {
     console.log('You must provide a text in argument!');
