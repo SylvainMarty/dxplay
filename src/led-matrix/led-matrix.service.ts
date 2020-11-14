@@ -29,24 +29,25 @@ export class LedMatrixService {
     private matrix: LedMatrixInstance;
 
     constructor () {
-        this.matrix = new LedMatrix(
-            {
-                ...LedMatrix.defaultMatrixOptions(),
-                rows: 16,
-                cols: 32,
-                chainLength: 2,
-                hardwareMapping: GpioMapping.AdafruitHatPwm,
-                pixelMapperConfig: LedMatrixUtils.encodeMappers({ type: PixelMapperType.U }),
-            },
-            {
-                ...LedMatrix.defaultRuntimeOptions(),
-                gpioSlowdown: 1,
-            }
-        );
+        // this.matrix = new LedMatrix(
+        //     {
+        //         ...LedMatrix.defaultMatrixOptions(),
+        //         rows: 16,
+        //         cols: 32,
+        //         chainLength: 2,
+        //         hardwareMapping: GpioMapping.AdafruitHatPwm,
+        //         pixelMapperConfig: LedMatrixUtils.encodeMappers({ type: PixelMapperType.U }),
+        //     },
+        //     {
+        //         ...LedMatrix.defaultRuntimeOptions(),
+        //         gpioSlowdown: 1,
+        //     }
+        // );
     }
 
     public async text(text: string): Promise<void>
     {
+        this.matrix = this.buildMatrix();
         this.matrix
             .clear();
         
@@ -68,5 +69,23 @@ export class LedMatrixService {
 
     private wait (t: number): Promise<void> {
         return new Promise(ok => setTimeout(ok, t));
+    }
+
+    private buildMatrix(): LedMatrixInstance
+    {
+        return new LedMatrix(
+            {
+                ...LedMatrix.defaultMatrixOptions(),
+                rows: 16,
+                cols: 32,
+                chainLength: 2,
+                hardwareMapping: GpioMapping.AdafruitHatPwm,
+                pixelMapperConfig: LedMatrixUtils.encodeMappers({ type: PixelMapperType.U }),
+            },
+            {
+                ...LedMatrix.defaultRuntimeOptions(),
+                gpioSlowdown: 1,
+            }
+        );
     }
 }
