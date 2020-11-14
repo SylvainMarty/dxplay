@@ -10,11 +10,11 @@ app.get('', (req, res) => {
 });
 app.post('', (req, res) => {
     console.log('postText', req.body);
-    if (!req.body) {
+    if (!req.body || !req.body.text) {
         res.status(400).send('No text given.');
         return;
     }
-    matrixled_1.display(req.body);
+    matrixled_1.display(req.body.text);
     res.send('Ok');
 });
 app.listen(3000, () => {
