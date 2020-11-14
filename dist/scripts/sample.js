@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const path = require("path");
-const led_matrix_service_1 = require("../src/led-matrix/led-matrix.service");
 const rpi_led_matrix_1 = require("rpi-led-matrix");
 const Colors = {
     Aquamarine: 0x7FFFD4,
@@ -56,7 +55,6 @@ if (!value) {
     process.exit(1);
 }
 else {
-    const service = new led_matrix_service_1.LedMatrixService();
-    service.text(process.argv[2]);
+    displayOnMatrix(process.argv[2]);
 }
 //# sourceMappingURL=sample.js.map

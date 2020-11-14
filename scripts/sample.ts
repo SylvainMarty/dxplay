@@ -85,7 +85,7 @@ if (!value) {
     console.log('You must provide a text in argument!')
     process.exit(1)
 } else {
-    const service = new LedMatrixService();
-    service.text(process.argv[2]);
-    // displayOnMatrix(process.argv[2]);
+    // const service = new LedMatrixService();
+    // service.text(process.argv[2]);
+    displayOnMatrix(process.argv[2]);
 }
