@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const matrixled_1 = require("./server/matrixled");
+const matrixled_1 = require("../src/matrixled");
 const value = process.argv[2];
 if (!value) {
     console.log('You must provide a text in argument!');

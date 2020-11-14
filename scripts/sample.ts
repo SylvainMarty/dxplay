@@ -1,4 +1,4 @@
-import { display } from './server/matrixled';
+import { display } from '../src/matrixled';
 
 const value = process.argv[2];
 if (!value) {
