@@ -1,13 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
+const bodyParser = require("body-parser");
 const matrixled_1 = require("./matrixled");
 const app = express();
+app.use(bodyParser.json());
 app.get('', (req, res) => {
     res.send('Hello express!');
 });
 app.post('', (req, res) => {
     console.log('postText', req.body);
+    if (!req.body) {
+        res.status(400).send('No text given.');
+    }
     matrixled_1.display(req.body);
     res.send('Ok');
 });
