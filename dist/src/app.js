@@ -20,4 +20,4 @@ app.post('', (req, res) => {
 app.listen(3000, () => {
     console.log('Server is up on port 3000.');
 });
-//# sourceMappingURL=main.js.map
+//# sourceMappingURL=app.js.map

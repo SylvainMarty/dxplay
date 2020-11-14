@@ -466,7 +466,7 @@
         "signature": "924732dfbdfd120ee07cf733c7c65018f24ce9ddf06ed9ccf3cad8fdc2e33585",
         "affectsGlobalScope": false
       },
-      "../src/main.ts": {
+      "../src/app.ts": {
         "version": "027ef8912267b3a1d7418ef02c68093d094124a616148b701f48cd5c86d4805d",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6",
         "affectsGlobalScope": false
@@ -1126,7 +1126,7 @@
       "../scripts/sample.ts": [
         "../src/matrixled.ts"
       ],
-      "../src/main.ts": [
+      "../src/app.ts": [
         "../node_modules/@types/body-parser/index.d.ts",
         "../node_modules/@types/express/index.d.ts",
         "../src/matrixled.ts"
