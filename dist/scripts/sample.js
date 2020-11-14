@@ -62,7 +62,8 @@ const sample = async () => {
     matrix.sync();
     console.log('Matrix sync done');
     console.log('Waiting...');
-    await wait(100000);
+    await wait(120000);
+    console.log('Terminating');
 };
 const value = process.argv[2];
 if (!value) {
