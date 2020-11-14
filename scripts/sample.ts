@@ -1,4 +1,5 @@
 import * as path from 'path';
+import { LedMatrixService } from '../src/led-matrix/led-matrix.service';
 import {
     LedMatrix,
     LedMatrixInstance,
@@ -82,5 +83,7 @@ if (!value) {
     console.log('You must provide a text in argument!')
     process.exit(1)
 } else {
-    displayOnMatrix(process.argv[2]);
+    const service = new LedMatrixService();
+    service.text(process.argv[2]);
+    // displayOnMatrix(process.argv[2]);
 }
