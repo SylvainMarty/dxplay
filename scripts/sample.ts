@@ -73,9 +73,11 @@ const displayOnMatrix = async (text: string): Promise<void> => {
         }
     }
 
+    console.log('Clearing matrix');
     matrix
         .clear()
         .sync();
+    console.log('Matrix cleared');
 }
 
 const value = process.argv[2];

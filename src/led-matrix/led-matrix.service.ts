@@ -35,9 +35,9 @@ export class LedMatrixService {
 
     public async text(text: string): Promise<void>
     {
-        this.matrix = this.buildMatrix();
+        const matrix = this.buildMatrix();
         console.log('Matrix built');
-        this.matrix
+        matrix
             .clear();
         console.log('Matrix cleared');
     
@@ -45,24 +45,24 @@ export class LedMatrixService {
         console.log(process.cwd(), path.join(process.cwd(), 'node_modules/rpi-led-matrix/fonts/6x10.bdf'));
         const font = new Font('6x10', path.join(process.cwd(), 'node_modules/rpi-led-matrix/fonts/6x10.bdf'));
         console.log('Font chosen');
-        this.matrix.font(font);
+        matrix.font(font);
         console.log('Font set on Matrix');
-        const lines = LayoutUtils.textToLines(font, this.matrix.width(), text);
+        const lines = LayoutUtils.textToLines(font, matrix.width(), text);
         console.log('Lines evaluated from text');
         for (const alignmentH of [HorizontalAlignment.Left, HorizontalAlignment.Center, HorizontalAlignment.Right]) {
             for (const alignmentV of [VerticalAlignment.Top, VerticalAlignment.Middle, VerticalAlignment.Bottom]) {
-                this.matrix.fgColor(Colors.Yellow).clear();
-                LayoutUtils.linesToMappedGlyphs(lines, font.height(), this.matrix.width(), this.matrix.height(), alignmentH, alignmentV)
+                matrix.fgColor(Colors.Yellow).clear();
+                LayoutUtils.linesToMappedGlyphs(lines, font.height(), matrix.width(), matrix.height(), alignmentH, alignmentV)
                     .map(glyph => {
-                        this.matrix.drawText(glyph.char, glyph.x, glyph.y);
+                        matrix.drawText(glyph.char, glyph.x, glyph.y);
                     });
-                this.matrix.sync();
+                matrix.sync();
                 await this.wait(400);
             }
         }
     
         console.log('Clearing matrix');
-        this.matrix
+        matrix
             .clear()
             .sync();
         console.log('Matrix cleared');

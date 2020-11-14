@@ -44,9 +44,11 @@ const displayOnMatrix = async (text) => {
             await wait(400);
         }
     }
+    console.log('Clearing matrix');
     matrix
         .clear()
         .sync();
+    console.log('Matrix cleared');
 };
 const value = process.argv[2];
 if (!value) {
